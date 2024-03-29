@@ -1,0 +1,2 @@
+export const NAVIGATOR_MAIN = 'NAVIGATOR_MAIN';
+export const NAVIGATOR_AUTH = 'NAVIGATOR_AUTH';

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "575819034533",
+    "project_id": "padel-mate-f61f9",
+    "storage_bucket": "padel-mate-f61f9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:575819034533:android:af67b53733cdc3ff38024c",
+        "android_client_info": {
+          "package_name": "com.padelmate.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzMOp5_gaJPhSqKyT7BywOvo5AB4H4x_0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
