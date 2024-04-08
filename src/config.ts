@@ -2,7 +2,7 @@ import configExtend from 'config-extend';
 
 const config = {
   coreApi: {
-    baseUrl: 'https://dev.api-core.padel-mate.app/v1',
+    baseUrl: 'https://dev.api-core.padelmate.app/v1',
   },
 };
 
