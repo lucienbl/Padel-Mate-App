@@ -11,12 +11,15 @@ import tw from '@/lib/tw';
 import { Image, Platform, Pressable, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { NavigationService } from '@/navigation/index.ts';
+import { useMe } from '@/services/users';
+import { Avatar } from '@/components';
 
 type MainNavigatorProps = {};
 
 const Tab = createBottomTabNavigator();
 
 const MainNavigator = ({}: MainNavigatorProps) => {
+  const { data: me } = useMe({});
   const insets = useSafeAreaInsets();
 
   return (
@@ -46,15 +49,15 @@ const MainNavigator = ({}: MainNavigatorProps) => {
                 style={tw.style('text-white font-semibold', {
                   'text-secondary': route.name === screenIds.SCREEN_HOURS,
                 })}>
-                Nom groupe
+                {(me?.groups?.length ?? 0) > 0 ? 'Nom groupe' : ''}
               </Text>
             </View>
             <Pressable
               onPress={() =>
                 NavigationService.navigate(screenIds.SCREEN_PROFILE)
-              }
-              style={tw`h-8 w-8 border-2 border-white rounded-full`}
-            />
+              }>
+              <Avatar size={8} name={me?.firstName} />
+            </Pressable>
           </View>
         ),
         tabBarStyle: tw.style(
