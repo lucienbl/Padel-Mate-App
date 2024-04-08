@@ -2,24 +2,23 @@ import React, { useState } from 'react';
 import {
   ImageBackground,
   KeyboardAvoidingView,
-  Platform,
   Pressable,
-  ScrollView,
   Text,
   View,
 } from 'react-native';
 import DatePicker from 'react-native-date-picker';
 import tw from '@/lib/tw';
 import { Button, TextInput } from '@/components';
-import { heightPercentageToDP } from 'react-native-responsive-screen';
-import PhoneInput from 'react-native-phone-input';
+import { registerUser } from '@/services/users';
+import auth from '@react-native-firebase/auth';
+import { NavigationService, navigatorIds } from '@/navigation';
 
 type RegisterScreenProps = {
   registerCore: (firstName: string, lastName: string, birthdate: Date) => void;
   isLoading?: boolean;
 };
 
-const RegisterScreen = ({ registerCore, isLoading }: RegisterScreenProps) => {
+const RegisterScreen = ({ isLoading }: RegisterScreenProps) => {
   const [user, setUser] = useState<any>({
     firstName: '',
     lastName: '',
@@ -34,7 +33,13 @@ const RegisterScreen = ({ registerCore, isLoading }: RegisterScreenProps) => {
     if (!validateForm()) {
       return;
     }
-    registerCore(user.firstName, user.lastName, user.birthdate);
+    await registerUser({
+      firstName: user.firstName,
+      lastName: user.lastName,
+      birthdate: user.birthdate,
+      firebaseUid: auth().currentUser?.uid ?? '',
+    });
+    NavigationService.replace(navigatorIds.NAVIGATOR_MAIN);
   };
 
   return (
@@ -61,7 +66,7 @@ const RegisterScreen = ({ registerCore, isLoading }: RegisterScreenProps) => {
           <Pressable
             onPress={() => setDatePickerOpen(true)}
             style={tw`bg-white px-4 py-4 rounded-xl`}>
-            <Text style={tw`text-neutral-700 font-poppins-regular`}>
+            <Text style={tw`text-neutral-700`}>
               {user.birthdate
                 ? user.birthdate.toLocaleDateString()
                 : 'Date de naissance'}

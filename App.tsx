@@ -8,6 +8,8 @@ import { StatusBar } from 'react-native';
 import { RootNavigator } from '@/navigation';
 import { navigationRef } from '@/navigation/NavigationService.ts';
 import AuthProvider from '@/contexts/Auth.tsx';
+import { QueryClientProvider } from 'react-query';
+import { queryClient } from '@/lib/react-query.ts';
 
 const App = () => {
   useDeviceContext(tw);
@@ -15,12 +17,14 @@ const App = () => {
   return (
     <GestureHandlerRootView style={tw`flex-1`}>
       <SafeAreaProvider>
-        <AuthProvider>
-          <NavigationContainer ref={navigationRef}>
-            <StatusBar barStyle="light-content" />
-            <RootNavigator />
-          </NavigationContainer>
-        </AuthProvider>
+        <QueryClientProvider client={queryClient}>
+          <AuthProvider>
+            <NavigationContainer ref={navigationRef}>
+              <StatusBar barStyle="light-content" />
+              <RootNavigator />
+            </NavigationContainer>
+          </AuthProvider>
+        </QueryClientProvider>
       </SafeAreaProvider>
     </GestureHandlerRootView>
   );

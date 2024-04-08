@@ -28,7 +28,7 @@ const TextInput = ({
       <BaseTextInput
         style={[
           tw.style(
-            'bg-black-lighten text-white font-poppins-regular px-6 py-4 rounded-xl',
+            'text-white px-6 py-4 rounded-xl',
             { 'py-2': !!small },
             { 'opacity-70': editable === false },
             { 'bg-red-100': !!error },

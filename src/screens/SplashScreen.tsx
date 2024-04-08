@@ -44,8 +44,7 @@ const SplashScreen = ({}: SplashScreenProps) => {
           resizeMode="contain"
           source={require('@/assets/images/img_logo.png')}
         />
-        <Text
-          style={tw`font-poppins-regular text-white mt-6 max-w-[80%] text-center`}>
+        <Text style={tw`text-white mt-6 max-w-[80%] text-center`}>
           Chargement...
         </Text>
       </View>

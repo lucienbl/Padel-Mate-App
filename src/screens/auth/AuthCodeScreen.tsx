@@ -12,11 +12,13 @@ import auth from '@react-native-firebase/auth';
 import { useAuth } from '@/contexts/Auth.tsx';
 import { getMe } from '@/services/users';
 import { NavigationService, navigatorIds, screenIds } from '@/navigation';
+import { useAppStore } from '@/stores/app.ts';
 
 type AuthCodeScreenProps = {};
 
 const AuthCodeScreen = ({}: AuthCodeScreenProps) => {
   const { confirmation } = useAuth();
+  const { token } = useAppStore();
 
   const [loading, setLoading] = useState(false);
 
@@ -24,15 +26,20 @@ const AuthCodeScreen = ({}: AuthCodeScreenProps) => {
   const [code, setCode] = useState('');
 
   const login = useCallback(async () => {
-    const user = await getMe();
-    if (user) {
-      NavigationService.replace(navigatorIds.NAVIGATOR_MAIN);
-    } else {
-      NavigationService.replace(navigatorIds.NAVIGATOR_AUTH, {
-        screen: screenIds.SCREEN_REGISTER,
+    getMe()
+      .then(() => {
+        NavigationService.replace(navigatorIds.NAVIGATOR_MAIN);
+      })
+      .catch(() => {
+        if (token) {
+          NavigationService.replace(navigatorIds.NAVIGATOR_AUTH, {
+            screen: screenIds.SCREEN_REGISTER,
+          });
+        } else {
+          NavigationService.replace(navigatorIds.NAVIGATOR_AUTH);
+        }
       });
-    }
-  }, []);
+  }, [token]);
 
   useEffect(() => {
     return auth().onAuthStateChanged(async user => {
@@ -77,11 +84,7 @@ const AuthCodeScreen = ({}: AuthCodeScreenProps) => {
             autoFocus
             placeholder="Code"
           />
-          {error && (
-            <Text style={tw`font-poppins-semibold text-xs text-red-500`}>
-              {error}
-            </Text>
-          )}
+          {error && <Text style={tw`text-xs text-red-500`}>{error}</Text>}
           <Button
             onPress={handleClickNext}
             title="Continuer"

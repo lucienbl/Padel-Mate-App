@@ -68,11 +68,7 @@ const AuthPhoneScreen = ({}: AuthPhoneScreenProps) => {
               style: tw`text-neutral-700 h-12`,
             }}
           />
-          {error && (
-            <Text style={tw`font-poppins-semibold text-xs text-red-600 mt-2`}>
-              {error}
-            </Text>
-          )}
+          {error && <Text style={tw`text-xs text-red-600 mt-2`}>{error}</Text>}
           <Button
             onPress={handleClickNext}
             title="Next"

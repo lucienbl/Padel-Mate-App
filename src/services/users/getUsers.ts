@@ -6,7 +6,7 @@ import { z } from 'zod';
 import { ExtractFnReturnType, QueryConfig } from '@/lib/react-query.ts';
 
 export const getUsers = async (): Promise<z.infer<typeof userSchema>> => {
-  const response = await instance.get('users').json();
+  const response = await instance().get('users').json();
   return userSchema.parse(response);
 };
 
