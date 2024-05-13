@@ -5,6 +5,7 @@ import * as screenIds from './screenIds';
 import { navigatorIds } from '@/navigation/index';
 import MainNavigator from '@/navigation/MainNavigator';
 import AuthNavigator from '@/navigation/AuthNavigator';
+import CreateNavigator from '@/navigation/CreateNavigator.tsx';
 
 const Stack = createNativeStackNavigator();
 
@@ -37,6 +38,14 @@ const RootNavigator = () => (
     <Stack.Screen
       name={screenIds.SCREEN_PROFILE}
       component={ProfileScreen}
+      options={{
+        headerShown: false,
+        presentation: 'modal',
+      }}
+    />
+    <Stack.Screen
+      name={navigatorIds.NAVIGATOR_CREATE}
+      component={CreateNavigator}
       options={{
         headerShown: false,
         presentation: 'modal',

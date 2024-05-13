@@ -1,7 +1,9 @@
 import React, { useCallback, useEffect } from 'react';
 import {
+  Image,
   ImageBackground,
   KeyboardAvoidingView,
+  Pressable,
   Text,
   View,
 } from 'react-native';
@@ -72,24 +74,34 @@ const AuthCodeScreen = ({}: AuthCodeScreenProps) => {
   return (
     <ImageBackground
       style={tw`flex-1`}
-      source={require('@/assets/images/img_auth_background.png')}>
-      <KeyboardAvoidingView behavior="padding" style={tw`flex-1 justify-end`}>
-        <View style={tw`p-6 gap-6`}>
+      source={require('@/assets/images/img_bg_auth.png')}>
+      <KeyboardAvoidingView
+        behavior="padding"
+        style={tw`flex-1 bg-primary-dark/70`}>
+        <View style={tw`flex-1 p-12`}>
+          <View style={tw`flex-1 items-center justify-center`}>
+            <Image
+              resizeMode="contain"
+              style={tw`w-1/2`}
+              source={require('@/assets/images/img_logo.png')}
+            />
+          </View>
           <TextInput
             value={code}
             onChangeText={setCode}
-            placeholderTextColor={tw.color('neutral-700')}
-            style={tw`my-2 bg-white text-neutral-700`}
+            placeholderTextColor={tw.color('neutral-300')}
+            style={tw`bg-white text-neutral-700 rounded-t-xl rounded-b-none`}
             keyboardType="number-pad"
             autoFocus
             placeholder="Code"
           />
           {error && <Text style={tw`text-xs text-red-500`}>{error}</Text>}
-          <Button
-            onPress={handleClickNext}
-            title="Continuer"
-            loading={loading}
-          />
+          <Pressable
+            style={tw`bg-primary rounded-b-xl py-3 items-center`}
+            disabled={loading}
+            onPress={handleClickNext}>
+            <Text style={tw`text-white text-lg font-bold`}>CONTINUER</Text>
+          </Pressable>
         </View>
       </KeyboardAvoidingView>
     </ImageBackground>

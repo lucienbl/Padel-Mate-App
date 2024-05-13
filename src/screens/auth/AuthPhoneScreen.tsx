@@ -1,7 +1,9 @@
 import React, { useRef } from 'react';
 import {
+  Image,
   ImageBackground,
   KeyboardAvoidingView,
+  Pressable,
   Text,
   View,
 } from 'react-native';
@@ -54,27 +56,36 @@ const AuthPhoneScreen = ({}: AuthPhoneScreenProps) => {
   return (
     <ImageBackground
       style={tw`flex-1`}
-      source={require('@/assets/images/img_auth_background.png')}>
-      <KeyboardAvoidingView behavior="padding" style={tw`flex-1 justify-end`}>
-        <View style={tw`p-6 gap-6`}>
+      source={require('@/assets/images/img_bg_auth.png')}>
+      <KeyboardAvoidingView
+        behavior="padding"
+        style={tw`flex-1 bg-primary-dark/70`}>
+        <View style={tw`flex-1 p-12`}>
+          <View style={tw`flex-1 items-center justify-center`}>
+            <Image
+              resizeMode="contain"
+              style={tw`w-1/2`}
+              source={require('@/assets/images/img_logo.png')}
+            />
+          </View>
           <PhoneInput
             ref={input}
-            style={tw`bg-white text-neutral-700 px-4 rounded-xl`}
+            style={tw`bg-white text-neutral-700 px-4 rounded-t-xl`}
             //initialCountry={RNLocalize.getCountry().toLowerCase()}
             onChangePhoneNumber={setPhone}
             textProps={{
-              placeholder: 'Phone number',
-              placeholderTextColor: tw.color('white/60'),
-              style: tw`text-neutral-700 h-12`,
+              placeholder: 'Ton n° de mobile',
+              placeholderTextColor: tw.color('neutral-300'),
+              style: tw`text-neutral-700 h-12 font-light text-center text-sm`,
             }}
           />
           {error && <Text style={tw`text-xs text-red-600 mt-2`}>{error}</Text>}
-          <Button
-            onPress={handleClickNext}
-            title="Next"
-            disabled={!phone}
-            loading={loading}
-          />
+          <Pressable
+            style={tw`bg-primary rounded-b-xl py-3 items-center`}
+            disabled={!phone || loading}
+            onPress={handleClickNext}>
+            <Text style={tw`text-white text-lg font-bold`}>CONTINUER</Text>
+          </Pressable>
         </View>
       </KeyboardAvoidingView>
     </ImageBackground>

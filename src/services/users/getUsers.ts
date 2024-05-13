@@ -5,15 +5,16 @@ import { userSchema } from '@/schemas/user.ts';
 import { z } from 'zod';
 import { ExtractFnReturnType, QueryConfig } from '@/lib/react-query.ts';
 
-export const getUsers = async (): Promise<z.infer<typeof userSchema>> => {
-  const response = await instance().get('users').json();
-  return userSchema.parse(response);
+export const getUsers = async (): Promise<
+  Array<z.infer<typeof userSchema>>
+> => {
+  const response: any = await instance().get('users').json();
+  return response.map((user: any) => userSchema.parse(user));
 };
 
 type QueryFnType = typeof getUsers;
 
 type UseUsersOptions = {
-  discussionId: string;
   config?: QueryConfig<QueryFnType>;
 };
 

@@ -2,16 +2,19 @@ import SplashScreen from './SplashScreen';
 import CalendarScreen from './CalendarScreen.tsx';
 import HoursScreen from './HoursScreen';
 import MessagesScreen from './MessagesScreen';
-import MembersScreen from './MembersScreen';
+import SearchScreen from './SearchScreen.tsx';
 import ProfileScreen from './ProfileScreen';
+import HomeScreen from './HomeScreen';
 
 export * from './auth';
+export * from './create';
 
 export {
   SplashScreen,
   CalendarScreen,
   HoursScreen,
   MessagesScreen,
-  MembersScreen,
+  SearchScreen,
   ProfileScreen,
+  HomeScreen,
 };

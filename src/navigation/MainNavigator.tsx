@@ -3,14 +3,16 @@ import * as screenIds from './screenIds';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   CalendarScreen,
+  HomeScreen,
   HoursScreen,
-  MembersScreen,
+  SearchScreen,
   MessagesScreen,
+  CreateChooseTypeScreen,
 } from '@/screens';
 import tw from '@/lib/tw';
 import { Image, Platform, Pressable, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { NavigationService } from '@/navigation/index.ts';
+import { NavigationService, navigatorIds } from '@/navigation/index.ts';
 import { useMe } from '@/services/users';
 import { Avatar } from '@/components';
 
@@ -24,44 +26,30 @@ const MainNavigator = ({}: MainNavigatorProps) => {
 
   return (
     <Tab.Navigator
-      initialRouteName={screenIds.SCREEN_CALENDAR}
+      initialRouteName={screenIds.SCREEN_HOME}
       screenListeners={() => ({
         //tabPress: () => ReactNativeHapticFeedback.trigger('impactHeavy'),
       })}
       screenOptions={{
         header: ({ route }) => (
           <View
-            style={tw.style(
-              `flex-row bg-black items-center justify-between pt-[${
-                (Platform.OS === 'android' ? 16 : 0) + insets.top
-              }px] pb-4 px-3`,
-              {
-                'bg-primary': route.name === screenIds.SCREEN_HOURS,
-              },
-            )}>
+            style={tw`flex-row bg-white items-center justify-between pt-[${
+              (Platform.OS === 'android' ? 16 : 0) + insets.top
+            }px] pb-4 px-3`}>
             <Image
               style={tw`h-8`}
               resizeMode="contain"
-              source={require('@/assets/images/img_logo_alt_white.png')}
+              source={require('@/assets/images/img_logo_short.png')}
             />
             <View>
-              <Text
-                style={tw.style('text-white font-semibold', {
-                  'text-secondary': route.name === screenIds.SCREEN_HOURS,
-                })}>
+              <Text style={tw`text-white font-semibold`}>
                 {(me?.groups?.length ?? 0) > 0 ? 'Nom groupe' : ''}
               </Text>
             </View>
-            <Pressable
-              onPress={() =>
-                NavigationService.navigate(screenIds.SCREEN_PROFILE)
-              }>
-              <Avatar size={8} name={me?.firstName} />
-            </Pressable>
           </View>
         ),
         tabBarStyle: tw.style(
-          `bg-neutral-800 border-t-0 ${
+          `bg-neutral-100 border-t-0 ${
             insets.bottom > 0 ? 'h-24 pt-2' : 'h-20 py-3'
           }`,
         ),
@@ -69,55 +57,46 @@ const MainNavigator = ({}: MainNavigatorProps) => {
         tabBarLabel: () => null,
       }}>
       <Tab.Screen
-        name={screenIds.SCREEN_HOURS}
-        component={HoursScreen}
+        name={screenIds.SCREEN_HOME}
+        component={HomeScreen}
         options={{
           tabBarIcon: ({ color }) => (
             <Image
               style={tw`tint-[${color}] h-6 w-6`}
               resizeMode="contain"
-              source={require('@/assets/images/img_icon_clock.png')}
+              source={require('@/assets/images/img_icon_home.png')}
             />
           ),
         }}
       />
       <Tab.Screen
-        name={screenIds.SCREEN_CALENDAR}
-        component={CalendarScreen}
+        name={screenIds.SCREEN_CREATE_CHOOSE_TYPE}
+        component={View}
         options={{
           tabBarIcon: ({ color }) => (
             <Image
-              style={tw`tint-[${color}] h-6 w-6`}
+              style={tw`tint-[${color}] h-12 w-12`}
               resizeMode="contain"
-              source={require('@/assets/images/img_icon_calendar.png')}
+              source={require('@/assets/images/img_icon_add.png')}
             />
           ),
         }}
+        listeners={({ navigation }) => ({
+          tabPress: e => {
+            e.preventDefault();
+            navigation.navigate(navigatorIds.NAVIGATOR_CREATE);
+          },
+        })}
       />
       <Tab.Screen
-        name={screenIds.SCREEN_MEMBERS}
-        component={MembersScreen}
+        name={screenIds.SCREEN_SEARCH}
+        component={SearchScreen}
         options={{
-          title: 'Home',
           tabBarIcon: ({ color }) => (
             <Image
               style={tw`tint-[${color}] h-6 w-6`}
               resizeMode="contain"
               source={require('@/assets/images/img_icon_search.png')}
-            />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name={screenIds.SCREEN_MESSAGES}
-        component={MessagesScreen}
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => (
-            <Image
-              style={tw`tint-[${color}] h-6 w-6`}
-              resizeMode="contain"
-              source={require('@/assets/images/img_icon_message.png')}
             />
           ),
         }}

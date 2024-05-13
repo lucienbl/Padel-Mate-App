@@ -45,13 +45,15 @@ const RegisterScreen = ({ isLoading }: RegisterScreenProps) => {
   return (
     <ImageBackground
       style={tw`flex-1`}
-      source={require('@/assets/images/img_auth_background.png')}>
-      <KeyboardAvoidingView behavior="padding" style={tw`flex-1 justify-end`}>
-        <View style={tw`p-6 gap-4`}>
+      source={require('@/assets/images/img_bg_auth.png')}>
+      <KeyboardAvoidingView
+        behavior="padding"
+        style={tw`flex-1 bg-primary-dark/70`}>
+        <View style={tw`flex-1 p-12 gap-2`}>
           <TextInput
             value={user.firstName}
             onChangeText={firstName => setUser({ ...user, firstName })}
-            style={tw`bg-white text-neutral-700 px-4 rounded-xl`}
+            style={tw`bg-white text-neutral-700 px-4 py-2 rounded-xl text-center`}
             placeholderTextColor={tw.color('neutral-700')}
             autoFocus
             placeholder="Prénom"
@@ -59,14 +61,14 @@ const RegisterScreen = ({ isLoading }: RegisterScreenProps) => {
           <TextInput
             value={user.lastName}
             onChangeText={lastName => setUser({ ...user, lastName })}
-            style={tw`bg-white text-neutral-700 px-4 rounded-xl`}
+            style={tw`bg-white text-neutral-700 px-4 py-2 rounded-xl text-center`}
             placeholderTextColor={tw.color('neutral-700')}
             placeholder="Nom"
           />
           <Pressable
             onPress={() => setDatePickerOpen(true)}
-            style={tw`bg-white px-4 py-4 rounded-xl`}>
-            <Text style={tw`text-neutral-700`}>
+            style={tw`bg-white text-neutral-700 px-4 py-2 rounded-xl text-center`}>
+            <Text style={tw`text-neutral-700 text-center`}>
               {user.birthdate
                 ? user.birthdate.toLocaleDateString()
                 : 'Date de naissance'}
