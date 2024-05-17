@@ -26,7 +26,7 @@ export const useCreateTournament = ({ config }: UseCreateTournamentOptions) => {
     Parameters<QueryFnType>[0],
     any
   >({
-    onMutate: async newData => {
+    onMutate: async (newData: any) => {
       await queryClient.cancelQueries({ queryKey: ['tournaments'] });
 
       const previousState = queryClient.getQueryData<Array<any>>([
@@ -54,6 +54,7 @@ export const useCreateTournament = ({ config }: UseCreateTournamentOptions) => {
       });
     },
     ...config,
+    // @ts-ignore
     mutationFn: createTournament,
   });
 };

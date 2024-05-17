@@ -5,6 +5,7 @@ import MessagesScreen from './MessagesScreen';
 import SearchScreen from './SearchScreen.tsx';
 import ProfileScreen from './ProfileScreen';
 import HomeScreen from './HomeScreen';
+import TournamentsScreen from './TournamentsScreen';
 
 export * from './auth';
 export * from './create';
@@ -17,4 +18,5 @@ export {
   SearchScreen,
   ProfileScreen,
   HomeScreen,
+  TournamentsScreen,
 };

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { ProfileScreen, SplashScreen } from '@/screens';
+import { ProfileScreen, SplashScreen, TournamentsScreen } from '@/screens';
 import * as screenIds from './screenIds';
 import { navigatorIds } from '@/navigation/index';
 import MainNavigator from '@/navigation/MainNavigator';
@@ -50,6 +50,10 @@ const RootNavigator = () => (
         headerShown: false,
         presentation: 'modal',
       }}
+    />
+    <Stack.Screen
+      name={screenIds.SCREEN_TOURNAMENTS}
+      component={TournamentsScreen}
     />
   </Stack.Navigator>
 );

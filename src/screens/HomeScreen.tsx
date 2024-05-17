@@ -67,6 +67,9 @@ const CalendarScreen = ({}: CalendarScreenProps) => {
             </View>
           </Pressable>
           <Pressable
+            onPress={() =>
+              NavigationService.navigate(screenIds.SCREEN_TOURNAMENTS)
+            }
             style={tw`mt-2 flex-row justify-between bg-neutral-100 rounded-lg border border-neutral-300 px-2 py-1 items-center gap-4`}>
             <View style={tw`flex-1`} />
             <Text style={tw`uppercase text-neutral-500 font-light`}>
