@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as screenIds from './screenIds';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { CreateChooseTypeScreen } from '@/screens';
-import { Image, Platform, Text, View } from 'react-native';
+import { Image, View } from 'react-native';
 import tw from '@/lib/tw.ts';
 import CreateTournamentScreen from '@/screens/create/CreateTournamentScreen.tsx';
 import CreateTournamentChooseClubScreen from '@/screens/create/CreateTournamentChooseClubScreen.tsx';

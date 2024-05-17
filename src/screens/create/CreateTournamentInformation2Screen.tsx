@@ -1,22 +1,19 @@
 import React, { useState } from 'react';
 import {
   FlatList,
-  Image,
   ImageBackground,
-  KeyboardAvoidingView,
   Pressable,
   ScrollView,
   Text,
   View,
 } from 'react-native';
 import tw from '@/lib/tw.ts';
-import { NavigationService, screenIds } from '@/navigation';
+import { NavigationService } from '@/navigation';
 import {
   CommonActions,
   RouteProp,
   StackActions,
 } from '@react-navigation/native';
-import { Calendar } from 'react-native-calendars';
 import dayjs from 'dayjs';
 import { TextInput } from '@/components';
 import SegmentedControl from '@react-native-segmented-control/segmented-control';

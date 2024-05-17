@@ -1,8 +1,6 @@
 import React from 'react';
-import { FlatList, ScrollView, Text, View } from 'react-native';
+import { FlatList, Text, View } from 'react-native';
 import tw from '@/lib/tw';
-import { useMe } from '@/services/users';
-import { Button } from '@/components';
 import { useTournaments } from '@/services/tournaments/getTournaments.ts';
 
 type TournamentsScreenProps = {};

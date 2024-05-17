@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as screenIds from './screenIds';
 import { RegisterScreen, AuthPhoneScreen, AuthCodeScreen } from '@/screens';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Image, Pressable, View } from 'react-native';
+import { View } from 'react-native';
 import tw from '@/lib/tw';
 
 type AuthNavigatorProps = {};

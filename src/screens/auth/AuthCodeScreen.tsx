@@ -7,7 +7,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import { Button, TextInput } from '@/components';
+import { TextInput } from '@/components';
 import { useState } from 'react';
 import tw from '@/lib/tw';
 import auth from '@react-native-firebase/auth';

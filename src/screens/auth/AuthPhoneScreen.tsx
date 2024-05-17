@@ -11,7 +11,6 @@ import { useEffect, useState } from 'react';
 import tw from '@/lib/tw';
 import { NavigationService, navigatorIds, screenIds } from '@/navigation';
 import PhoneInput from 'react-native-phone-input';
-import { Button } from '@/components';
 import { useAuth } from '@/contexts/Auth.tsx';
 
 type AuthPhoneScreenProps = {};

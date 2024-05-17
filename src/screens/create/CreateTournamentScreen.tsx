@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  FlatList,
-  Image,
-  ImageBackground,
-  KeyboardAvoidingView,
-  Pressable,
-  Text,
-  View,
-} from 'react-native';
+import { ImageBackground, Pressable, Text, View } from 'react-native';
 import tw from '@/lib/tw.ts';
 import { NavigationService, screenIds } from '@/navigation';
 import { CommonActions } from '@react-navigation/native';

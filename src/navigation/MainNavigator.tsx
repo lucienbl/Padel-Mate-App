@@ -1,20 +1,12 @@
 import * as React from 'react';
 import * as screenIds from './screenIds';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import {
-  CalendarScreen,
-  HomeScreen,
-  HoursScreen,
-  SearchScreen,
-  MessagesScreen,
-  CreateChooseTypeScreen,
-} from '@/screens';
+import { HomeScreen, SearchScreen } from '@/screens';
 import tw from '@/lib/tw';
-import { Image, Platform, Pressable, Text, View } from 'react-native';
+import { Image, Platform, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { NavigationService, navigatorIds } from '@/navigation/index.ts';
+import { navigatorIds } from '@/navigation/index.ts';
 import { useMe } from '@/services/users';
-import { Avatar } from '@/components';
 
 type MainNavigatorProps = {};
 

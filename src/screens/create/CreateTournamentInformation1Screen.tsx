@@ -1,16 +1,8 @@
 import React, { useMemo, useState } from 'react';
-import {
-  FlatList,
-  Image,
-  ImageBackground,
-  KeyboardAvoidingView,
-  Pressable,
-  Text,
-  View,
-} from 'react-native';
+import { FlatList, ImageBackground, Pressable, Text, View } from 'react-native';
 import tw from '@/lib/tw.ts';
 import { NavigationService, screenIds } from '@/navigation';
-import { CommonActions, RouteProp } from '@react-navigation/native';
+import { RouteProp } from '@react-navigation/native';
 import dayjs from 'dayjs';
 import { Calendar } from 'react-native-calendars';
 import RNDateTimePicker from '@react-native-community/datetimepicker';
